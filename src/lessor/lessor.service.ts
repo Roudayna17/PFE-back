@@ -6,8 +6,6 @@ import * as bcrypt from 'bcrypt';
 import { Lessor } from './entities/lessor.entity';
 import { Repository } from 'typeorm';
 
-
-
 @Injectable()
 export class LessorService {
    

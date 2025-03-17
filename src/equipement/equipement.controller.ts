@@ -28,36 +28,32 @@ export class EquipementController {
   }
 
   @Get('list-equipement')
-findAll() {
-  return this.equipementService.findAll();
-}
+  findAll() {
+    return this.equipementService.findAll();
+  }
 
   @Get('detail-equipement/:id')
   findOne(@Param('id') id: number) {
     return this.equipementService.findOne(id);
   }
 
- 
-
-
-
   @Patch('update-equipement/:id')
-@UseInterceptors(FileInterceptor('image')) // Intercepte le fichier image
-async update(
-  @Param('id') id: number,
-  @Body() updateEquipementDto: UpdateEquipementDto,
-  @UploadedFile() file?: Express.Multer.File, // Fichier image optionnel
-) {
-  return this.equipementService.update(id, updateEquipementDto, file);
-}
+  @UseInterceptors(FileInterceptor('image')) // Intercepte le fichier image
+  async update(
+    @Param('id') id: number,
+    @Body() updateEquipementDto: UpdateEquipementDto,
+    @UploadedFile() file?: Express.Multer.File, // Fichier image optionnel
+  ) {
+    return this.equipementService.update(id, updateEquipementDto, file);
+  }
 
-@Delete('delete-equipement/:id')
-remove(@Param('id') id: number) {
-  return this.equipementService.remove(+id);
-}
+  @Delete('delete-equipement/:id')
+  remove(@Param('id') id: number) {
+    return this.equipementService.remove(+id);
+  }
 
-@Post('delete-multiple')
-removeMultiple(@Body() EquipementList: any) {
-  return this.equipementService.removeMultiple(EquipementList.ids);
-}
+  @Post('delete-multiple')
+  removeMultiple(@Body() EquipementList: any) {
+    return this.equipementService.removeMultiple(EquipementList.ids);
+  }
 }

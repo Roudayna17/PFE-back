@@ -1,4 +1,5 @@
-import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { House } from "src/house/entities/house.entity";
+import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 @Entity("lessor")
 export class Lessor {
     @PrimaryGeneratedColumn()
@@ -31,7 +32,8 @@ export class Lessor {
     updated_at: Date;
     @Column("date",{name:"deleteAt",nullable:true})
     deleted_at: Date;
-
+  @OneToMany(() => House, (house) => house.lessorId,)
+    houses: House[];
 
     @BeforeInsert()
     DateCreateAT(){

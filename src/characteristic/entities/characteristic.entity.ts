@@ -44,7 +44,7 @@ export class Characteristic {
 
   @Column('date', { name: 'deleted_at', nullable: true })
   deleted_at: Date;
-   @ManyToOne(() => House, (house) => house.characteristics, { onDelete: 'CASCADE' })
+   @ManyToOne(() => House, (house) => house.characterisrtics, { onDelete: 'CASCADE' })
           @JoinColumn({ name: 'houseId' })
           houseId: number;
 

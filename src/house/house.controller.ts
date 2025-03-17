@@ -1,4 +1,3 @@
-
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { HouseService } from './house.service';
 import { CreateHouseDto } from './dto/create-house.dto';
@@ -7,33 +6,31 @@ import { House } from './entities/house.entity';
 
 @Controller('house')
 export class HouseController {
- constructor(private readonly houseService: HouseService) {}
+  constructor(private readonly houseService: HouseService) {}
 
- @Post('create-house')
- create(@Body() createHouseDto: CreateHouseDto) {
-   return this.houseService.create(createHouseDto);
- }
- @Get('list-house') // ✅ Assure-toi que c'est bien '/house/list-house'
- findAll() {
-   return this.houseService.findAll();
- }
+  @Post('create-house')
+  create(@Body() createHouseDto: CreateHouseDto) {
+    return this.houseService.create(createHouseDto);
+  }
 
- @Get('detail-house/:id')
- findOne(@Param('id') id: string) {
-   return this.houseService.findOne(+id);
- }
+  @Get('list-house')
+  findAll() {
+    console.log('✅ Endpoint GET /houses/list-houses appelé');
+    return this.houseService.findAll();
+  }
 
- @Patch('update-house/:id')
- update(@Param('id') id: string, @Body() updateHouseDto: UpdateHouseDto) {
-   return this.houseService.update(+id, updateHouseDto);
- }
+  @Get('detail-house/:id')
+  findOne(@Param('id') id: string) {
+    return this.houseService.findOne(+id);
+  }
 
- @Delete('delete-house/:id')
- remove(@Param('id') id: string) {
-   return this.houseService.delete(+id);
- }
- @Post('delete-multiple')
-removeMultiple(@Body() EquipementList: any) {
- return this.houseService.removeMultiple(EquipementList.ids);
-}
+  @Patch('update-house/:id')
+  update(@Param('id') id: string, @Body() updateHouseDto: UpdateHouseDto) {
+    return this.houseService.update(+id, updateHouseDto);
+  }
+
+  @Delete('delete-house/:id')
+  remove(@Param('id') id: string) {
+    return this.houseService.delete(+id);
+  }
 }
