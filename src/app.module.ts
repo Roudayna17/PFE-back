@@ -14,6 +14,7 @@ import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { PicturesModule } from './pictures/pictures.module';
 import { LessorModule } from './lessor/lessor.module';
+import { OffreModule } from './offre/offre.module';
 
 @Module({
   imports: [
@@ -28,8 +29,6 @@ import { LessorModule } from './lessor/lessor.module';
       autoLoadEntities: true,
       synchronize: true,
         //  synchronize: false
-
-        
     })}),
     ConfigModule.forRoot(),
     UserModule,
@@ -38,11 +37,9 @@ import { LessorModule } from './lessor/lessor.module';
     ContactModule,
     EquipementModule,
     LessorModule,
-    
+    OffreModule,
     CharacteristicModule,
-    
     HouseModule,
-    
     CloudinaryModule,
     PicturesModule
   ],

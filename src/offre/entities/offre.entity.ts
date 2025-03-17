@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
+import { House } from 'src/house/entities/house.entity';
+import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity('offre')
 export class Offre {
@@ -26,7 +27,9 @@ export class Offre {
         deleted_at: Date;
         @Column("int",{name:"deleted_by",nullable:true})
         deleted_by: number;
-        
+        @OneToOne(() => House, (house) => house.offreId, )
+        @JoinColumn()
+        houseId: number
         @BeforeInsert()
         setCreateDate() {
           this.created_at = new Date();

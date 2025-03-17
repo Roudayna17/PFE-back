@@ -5,14 +5,13 @@ import { Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate, Man
 export class Equipement {
   @PrimaryGeneratedColumn()
   id: number;
+        @Column("text",{name:"title",nullable:true})
         @Column("text",{name:"condition",nullable:true})
         condition: string;
         @Column("text",{name:"quantity",nullable:true})
         quantity: number;
         @Column("text",{name:"isavaible",nullable:true})
         isavaible: boolean;
-        @Column("text",{name:"title",nullable:true})
-        title: string;
         @Column("text",{name:"description",nullable:true})
         description: string;
         @Column("text",{name:"active",nullable:true})
@@ -49,4 +48,3 @@ export class Equipement {
     
     
     }
-    
